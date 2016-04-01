@@ -50,6 +50,9 @@ function mapify_permission() {
   );
 }
 
+/**
+ * Implements hook_menu().
+ */
 function mapify_menu() {
   $items = array();
 
