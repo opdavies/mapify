@@ -1,0 +1,8 @@
+api = 2
+core = 7.x
+
+projects[libraries] = 2
+
+libraries[mapify][download][type] = "get"
+libraries[mapify][download][url] = "https://github.com/etienne-martin/mapify/archive/master.zip"
+libraries[mapify][destination] = "libraries"
