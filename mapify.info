@@ -2,4 +2,5 @@ name = Mapify
 description = Integrates the Mapify library with Drupal.
 core = 7.x
 package = User interface
+configure = admin/config/user-interface/mapify
 dependencies[] = libraries
