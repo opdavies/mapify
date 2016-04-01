@@ -40,6 +40,15 @@ function mapify_libraries_info() {
 }
 
 /**
+ * Implements hook_init().
+ */
+function mapify_init() {
+  if (!path_is_admin(current_path())) {
+    libraries_load('mapify');
+  }
+}
+
+/**
  * Version callback for the Mapify library.
  *
  * @return string|bool
