@@ -1,0 +1,7 @@
+<?php
+
+/**
+ * @file
+ * Integrates the Mapify library with Drupal.
+ */
+
