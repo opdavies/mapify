@@ -5,3 +5,7 @@
  * Integrates the Mapify library with Drupal.
  */
 
+/**
+ * The URL to the Mapify on GitHub.
+ */
+define('MAPIFY_LIBRARY_URL', 'https://github.com/etienne-martin/mapify');
