@@ -1,5 +1,5 @@
 name = Mapify Examples
 description = Examples of the Mapify module within Drupal.
 core = 7.x
-
+package = User interface
 dependencies[] = mapify
