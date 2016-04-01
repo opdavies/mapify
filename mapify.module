@@ -6,6 +6,44 @@
  */
 
 /**
- * The URL to the Mapify on GitHub.
+ * The vendor URL.
+ */
+define('MAPIFY_VENDOR_URL', 'http://etiennemartin.ca/mapify');
+
+/**
+ * The library URL.
  */
 define('MAPIFY_LIBRARY_URL', 'https://github.com/etienne-martin/mapify');
+
+/**
+ * Implements hook_libraries_info().
+ */
+function mapify_libraries_info() {
+  $libraries = array();
+
+  $libraries['mapify'] = array(
+    'name' => t('Mapify'),
+    'vendor url' => MAPIFY_VENDOR_URL,
+    'download url' => MAPIFY_LIBRARY_URL . '/archive/master.zip',
+    'version callback' => 'mapify_version',
+    'files' => array(
+      'css' => array(
+        'build/jquery.mapify.css',
+      ),
+      'js' => array(
+        'build/jquery.mapify.js',
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Version callback for the Mapify library.
+ *
+ * @return string|bool
+ */
+function mapify_version() {
+  return TRUE;
+}
