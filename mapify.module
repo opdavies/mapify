@@ -40,10 +40,43 @@ function mapify_libraries_info() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function mapify_permission() {
+  return array(
+    'administer mapify' => array(
+      'title' => t('Administer Mapify'),
+    ),
+  );
+}
+
+function mapify_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/mapify'] = array(
+    'title' => 'Mapify',
+    'description' => 'Configure the Mapify module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mapify_settings_form'),
+    'access arguments' => array('administer mapify'),
+    'file' => 'mapify.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
  * Implements hook_init().
  */
 function mapify_init() {
-  if (!path_is_admin(current_path())) {
+  $load_mapify = TRUE;
+
+  $paths_disable = variable_get('mapify_paths_disable', '');
+  if ($paths_disable && drupal_match_path(current_path(), $paths_disable)) {
+    $load_mapify = FALSE;
+  }
+
+  if ($load_mapify === TRUE) {
     libraries_load('mapify');
   }
 }

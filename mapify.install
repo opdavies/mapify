@@ -36,3 +36,25 @@ function mapify_requirements($phase) {
 
   return $requirements;
 }
+
+/**
+ * Implements hook_install().
+ */
+function mapify_install() {
+  // Set default values for mapify_paths_disable.
+  mapify_update_7000();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mapify_uninstall() {
+  variable_del('mapify_paths_disable');
+}
+
+/**
+ * Set mapify_paths_disable.
+ */
+function mapify_update_7000() {
+  variable_set('mapify_paths_disable', implode(PHP_EOL, array('admin', 'admin/*')));
+}
