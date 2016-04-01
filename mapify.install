@@ -14,23 +14,8 @@ function mapify_requirements($phase) {
 
   switch ($phase) {
     case 'runtime':
-      $library = libraries_detect('mapify');
-
-      if ($library['installed']) {
-        $requirements['mapify'] = array(
-          'value' => $t('OK'),
-          'severity' => REQUIREMENT_OK,
-        );
-      }
-      else {
-        $requirements['mapify'] = array(
-          'value' => $library['error'],
-          'description' => $library['error message'],
-          'severity' => REQUIREMENT_ERROR,
-        );
-      }
-
-      $requirements['mapify']['title'] = $t('Mapify');
+      _mapify_requirements_library_installed($t, $requirements);
+      _mapify_requirements_jquery_minimum_version($t, $requirements);
       break;
   }
 
@@ -57,4 +42,44 @@ function mapify_uninstall() {
  */
 function mapify_update_7000() {
   variable_set('mapify_paths_disable', implode(PHP_EOL, array('admin', 'admin/*')));
+}
+
+/**
+ * Check if the Mapify library is installed.
+ */
+function _mapify_requirements_library_installed($t, array &$requirements) {
+  $library = libraries_detect('mapify');
+
+  if ($library['installed']) {
+    $requirements['mapify'] = array(
+      'value' => $t('Installed'),
+      'severity' => REQUIREMENT_OK,
+    );
+  }
+  else {
+    $requirements['mapify'] = array(
+      'value' => $library['error'],
+      'description' => $library['error message'],
+      'severity' => REQUIREMENT_ERROR,
+    );
+  }
+
+  $requirements['mapify']['title'] = $t('Mapify library');
+}
+
+/**
+ * Check that a new enough version of jQuery is being used.
+ */
+function _mapify_requirements_jquery_minimum_version($t, array &$requirements) {
+  $jquery = drupal_get_library('system', 'jquery');
+
+  if ($jquery['version'] < MAPIFY_MIN_JQUERY_VERSION) {
+    $requirements['mapify_jquery'] = array(
+      'value' => $jquery['version'],
+      'description' => $t('Mapify requires a minimum jQuery version of !version.', array('!version' => MAPIFY_MIN_JQUERY_VERSION)),
+      'severity' => REQUIREMENT_ERROR,
+    );
+
+    $requirements['mapify_jquery']['title'] = $t('Mapify jQuery version');
+  }
 }

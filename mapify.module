@@ -16,6 +16,11 @@ define('MAPIFY_VENDOR_URL', 'http://etiennemartin.ca/mapify');
 define('MAPIFY_LIBRARY_URL', 'https://github.com/etienne-martin/mapify');
 
 /**
+ * The minimum required version of jQuery needed.
+ */
+define('MAPIFY_MIN_JQUERY_VERSION', '1.7.2');
+
+/**
  * Implements hook_libraries_info().
  */
 function mapify_libraries_info() {
