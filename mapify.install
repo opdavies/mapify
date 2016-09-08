@@ -73,7 +73,7 @@ function _mapify_requirements_library_installed($t, array &$requirements) {
 function _mapify_requirements_jquery_minimum_version($t, array &$requirements) {
   $jquery = drupal_get_library('system', 'jquery');
 
-  if ($jquery['version'] < MAPIFY_MIN_JQUERY_VERSION) {
+  if ((int) $jquery['version'] < (int) MAPIFY_MIN_JQUERY_VERSION) {
     $requirements['mapify_jquery'] = array(
       'value' => $jquery['version'],
       'description' => $t('Mapify requires a minimum jQuery version of !version.', array('!version' => MAPIFY_MIN_JQUERY_VERSION)),
