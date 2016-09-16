@@ -1,0 +1,12 @@
+{
+  "name": "drupal/mapify",
+  "description": "Integrates the Mapify.js library into Drupal.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Oliver Davies",
+      "email": "oliver@oliverdavies.uk"
+    }
+  ]
+}
