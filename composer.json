@@ -2,11 +2,17 @@
   "name": "drupal/mapify",
   "description": "Integrates the Mapify.js library into Drupal.",
   "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/mapify",
   "license": "GPL-2.0+",
   "authors": [
     {
       "name": "Oliver Davies",
-      "email": "oliver@oliverdavies.uk"
+      "homepage": "https://www.drupal.org/u/opdavies",
+      "role": "Maintainer"
     }
-  ]
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/mapify",
+    "source": "http://cgit.drupalcode.org/mapify"
+  }
 }
